@@ -1,0 +1,34 @@
+<div class="layer">
+  <div class="form">
+    <form #addForm="ngForm" (ngSubmit)="submitAction(addForm, $event.submitter.value)">
+      <label for="url">Long URL:</label><br>
+      <input type="text" id="url" ngModel name="url">
+      <label for="amount">Expiration time: </label>
+      <input class="expiration" type="text" id="amount" ngModel name="amount">
+      <select size="1" id="unit" ngModel name="unit">
+        <option value="days">days</option>
+        <option value="hours">hours</option>
+      </select>
+      <br><br>
+      <label for="answer">Short URL:</label><br>
+      <input type="text" id="answer" value={{shortUrlAnswer}} name="answer" disabled>
+      <br><br>
+      <button type="submit" value="Save">Save</button>
+      <br><br>
+      <button type="submit" value="Get_visits">Get visits</button>
+    </form>
+  </div>
+
+  <div class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Short URL</div>
+      <div class="col col-2">URL</div>
+      <div class="col col-3">Visit Date</div>
+    </li>
+    <li class="table-row" *ngFor="let visit of visits">
+      <div class="col col-1" data-label="Job Id"> {{visit.shortUrl}}</div>
+      <div class="col col-2" data-label="Customer Name"> {{visit.url}}</div>
+      <div class="col col-3" data-label="Amount"> {{visit.visitDate}}</div>
+    </li>
+  </div>
+</div>
